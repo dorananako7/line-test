@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example</groupId>
+  <artifactId>line-shift-bot</artifactId>
+  <version>0.0.1</version>
+  <name>line-shift-bot</name>
+  <description>LINE bot (Java + Spring Boot)</description>
+
+  <!-- Spring Boot 3.5.x（Java 17+） -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.5.4</version>
+    <relativePath />
+  </parent>
+
+  <properties>
+    <java.version>17</java.version>
+    <line.bot.version>9.10.1</line.bot.version>
+    <project.build.finalName>app</project.build.finalName>
+  </properties>
+
+  <dependencies>
+    <!-- Web（内蔵Tomcat） -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!-- LINE Bot SDK（Spring統合 & Webhook & APIクライアント） -->
+    <dependency>
+      <groupId>com.linecorp.bot</groupId>
+      <artifactId>line-bot-spring-boot-webmvc</artifactId>
+      <version>${line.bot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.linecorp.bot</groupId>
+      <artifactId>line-bot-spring-boot-client</artifactId>
+      <version>${line.bot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.linecorp.bot</groupId>
+      <artifactId>line-bot-webhook</artifactId>
+      <version>${line.bot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.linecorp.bot</groupId>
+      <artifactId>line-bot-messaging-api-client</artifactId>
+      <version>${line.bot.version}</version>
+    </dependency>
+
+    <!-- テスト（任意） -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.linecorp.bot</groupId>
+      <artifactId>line-bot-spring-boot-handler</artifactId>
+      <version>${line.bot.version}</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>com.example.bot.EchoApplication</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
